@@ -47,10 +47,12 @@ Resources:
         - - "BD"
           - !Ref AWS::StackName
 
-      DBName: demo-db
+      DBName: !Join
+        - "-"
+        - - "demo-db"
+          - !Ref AWS::StackName
       DBInstanceClass: !Ref RDSTYPE
       AllocatedStorage: 20
-      StorageType: gp2
       Engine: MySQL
       EngineVersion: 8.0.16
       MasterUsername: !Ref BDUSER
