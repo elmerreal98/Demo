@@ -7,7 +7,7 @@ def metodo1():
 
 @app.route('/crear')
 def metodo2():
-    return render_template('crear.html')s
+    return render_template('crear.html')
 
 @app.route('/listar')
 def metodo3():
