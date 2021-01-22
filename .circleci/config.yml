@@ -19,7 +19,11 @@ jobs:
     machine: # executor type
       image: ubuntu-1604:201903-01 # # recommended linux image - includes Ubuntu 16.04, docker 18.09.3, docker-compose 1.23.1
     steps:
-      - checkouts
+      - checkout
+      - run:
+          name: "Login docker hub"
+          command: |
+            docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
       - run:
           name: "Build image"
           command: |
@@ -32,3 +36,7 @@ workflows:
           filters:
             branches:
               only: infrastructura
+      - CI:
+          filters:
+            branches:
+              only: developer
