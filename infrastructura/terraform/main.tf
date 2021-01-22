@@ -8,7 +8,7 @@ terraform {
     region = "us-west-2"
   }
 }
-module "Roles" {
-  source = "./modules/Roles"
+module "Tablas_DynamoDB" {
+  source = "./modules/DynamoDb"
 }
 
