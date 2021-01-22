@@ -6,17 +6,14 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "Go to directory"
+          name: "Upload files"
           command: |
-            cd infrastructura/cloudformation
-      - run:
-          name: "Check files"
-          command: |
-            ls
-            aws s3 cp ../cloudformation s3://demo-cloudformation-template-elmer --recursive
+            cd infrastructura
+            aws s3 cp cloudformation s3://demo-cloudformation-template-elmer --recursive
       - run:
           name: "Deploy cloudformation stack"
           command: |
+            cd infrastructura/cloudformation
             aws cloudformation deploy --template-file ./principal.yml --stack-name demo --parameter-overrides BDPASS=$BD_PASS BDUSER=$BD_USER BucketS3="https://demo-cloudformation-template-elmer.s3-us-west-2.amazonaws.com"
 workflows:
   version: 2
