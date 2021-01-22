@@ -47,11 +47,9 @@ Resources:
         - - "BD"
           - !Ref AWS::StackName
 
-      DBName: !Join
-        - "-"
-        - - "demo-db"
-          - !Ref AWS::StackName
+      DBName: "demodb"
       DBInstanceClass: !Ref RDSTYPE
+      AvailabilityZone: "us-west-2a"
       AllocatedStorage: 20
       Engine: MySQL
       EngineVersion: 8.0.16
