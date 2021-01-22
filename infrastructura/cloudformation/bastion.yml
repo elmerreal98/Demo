@@ -48,8 +48,6 @@ Resources:
         Fn::Base64: !Sub |
           #!/bin/bash
           yum update -y
-          #!/bin/bash
-          yum update -y
           yum install httpd -y
           service httpd start
           chkconfig httpd on
