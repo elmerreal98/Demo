@@ -7,9 +7,9 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "Wait until service reach steady state"
+          name: "Deploy cloudformation stack"
           command: |
-            aws s3 ls
+            aws cloudformation deploy --template-file ./principal.yml --stack-name demo --parameter-overrides BDPASS=$BD_PASS BDUSER=$BD_USER BucketS3="https://demo-cloudformation-template-elmer.s3-us-west-2.amazonaws.com"
 workflows:
   version: 2
   build_and_test:
