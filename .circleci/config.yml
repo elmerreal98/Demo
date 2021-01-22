@@ -1,15 +1,19 @@
 version: 2.1
 jobs:
   prebuild:
-    working_directory: ~/infrastructura/cloudformation
     machine: # executor type
       image: ubuntu-1604:201903-01 # # recommended linux image - includes Ubuntu 16.04, docker 18.09.3, docker-compose 1.23.1
     steps:
       - checkout
       - run:
+          name: "Go to directory"
+          command: |
+            cd infrastructura/cloudformation
+      - run:
           name: "Check files"
           command: |
             ls
+            aws s3 cp ../cloudformation s3://demo-cloudformation-template-elmer --recursive
       - run:
           name: "Deploy cloudformation stack"
           command: |
