@@ -68,3 +68,6 @@ Resources:
         RefSG: !GetAtt NetworkStack.Outputs.RefSG
         RefDefaultSG: !GetAtt NetworkStack.Outputs.RefDefaultSG
         EC2TYPE: !Ref EC2TYPE
+        EndpointBD: !GetAtt BDStack.Outputs.EndpointBD
+        BDUSER: !Ref BDUSER
+        BDPASS: !Ref BDPASS

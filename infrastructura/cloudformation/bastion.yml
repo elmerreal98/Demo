@@ -17,6 +17,18 @@ Parameters:
     Description: "Tipo EC2TYPE"
     Type: String
     Default: t2.micro
+  
+  EndpointBD:
+    Description: "Endpoint RDS"
+    Type: String
+
+  BDUSER:
+    Description: "User"
+    Type: String
+
+  BDPASS:
+    Description: "Password"
+    Type: String
 
 Resources:
   MyEC2Instance:
