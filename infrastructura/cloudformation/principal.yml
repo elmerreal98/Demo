@@ -51,7 +51,10 @@ Resources:
     Type: "AWS::S3::Bucket"
     DeletionPolicy: Retain
     Properties:
-      BucketName: demo-bucket-terraform
+      BucketName: !Join
+        - "-"
+        - - "demo-bucket-terraform"
+          - !Ref AWS::StackName
 
   BastionStack:
     Type: AWS::CloudFormation::Stack
