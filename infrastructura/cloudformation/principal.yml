@@ -32,20 +32,20 @@ Resources:
         - - !Ref BucketS3
           - "/network.yml"
 
-  BDStack:
-    Type: AWS::CloudFormation::Stack
-    Properties:
-      TemplateURL: !Join
-        - ""
-        - - !Ref BucketS3
-          - "/db.yml"
-      Parameters:
-        RefSubnetsPrivadas: !GetAtt NetworkStack.Outputs.RefSubnetsPrivadas
-        RefSG: !GetAtt NetworkStack.Outputs.RefSGBD
-        RefDefaultSG: !GetAtt NetworkStack.Outputs.RefDefaultSG
-        BDUSER: !Ref BDUSER
-        BDPASS: !Ref BDPASS
-        RDSTYPE: !Ref RDSTYPE
+  #  BDStack:
+  #    Type: AWS::CloudFormation::Stack
+  #    Properties:
+  #      TemplateURL: !Join
+  #        - ""
+  #        - - !Ref BucketS3
+  #          - "/db.yml"
+  #      Parameters:
+  #        RefSubnetsPrivadas: !GetAtt NetworkStack.Outputs.RefSubnetsPrivadas
+  #        RefSG: !GetAtt NetworkStack.Outputs.RefSGBD
+  #        RefDefaultSG: !GetAtt NetworkStack.Outputs.RefDefaultSG
+  #        BDUSER: !Ref BDUSER
+  #        BDPASS: !Ref BDPASS
+  #        RDSTYPE: !Ref RDSTYPE
 
   S3Bucket:
     Type: "AWS::S3::Bucket"

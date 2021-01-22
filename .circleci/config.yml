@@ -14,7 +14,7 @@ jobs:
           name: "Deploy cloudformation stack"
           command: |
             cd infrastructura/cloudformation
-            aws cloudformation deploy --template-file ./principal.yml --stack-name demo --parameter-overrides BDPASS=$BD_PASS BDUSER=$BD_USER BucketS3="https://demo-cloudformation-template-elmer.s3-us-west-2.amazonaws.com"
+            #aws cloudformation deploy --template-file ./principal.yml --stack-name demo --parameter-overrides BDPASS=$BD_PASS BDUSER=$BD_USER BucketS3="https://demo-cloudformation-template-elmer.s3-us-west-2.amazonaws.com"
 workflows:
   version: 2
   build_and_test:
