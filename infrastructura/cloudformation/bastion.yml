@@ -23,7 +23,7 @@ Resources:
     Type: AWS::EC2::Instance
     Properties:
       ImageId: "ami-0e8c04af2729ff1bb"
-      KeyName: "Key"
+      KeyName: "EC2Tutorial"
       InstanceType: !Ref EC2TYPE
       NetworkInterfaces:
         - AssociatePublicIpAddress: "true"
