@@ -1,10 +1,11 @@
 apiVersion: v1
-kind: NodePort
+kind: Service
 metadata:
   name: service-flask
 spec:
   selector:
     app: flask
+  type: LoadBalancer
   ports:
     - port: 5000
       targetPort: 5000
