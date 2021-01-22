@@ -54,7 +54,7 @@ Resources:
       BucketName: !Join
         - "-"
         - - "demo-bucket-terraform"
-          - !Ref AWS::StackName
+          - "2021-elmer"
 
   BastionStack:
     Type: AWS::CloudFormation::Stack
