@@ -23,7 +23,7 @@ jobs:
       - run:
           name: "Login docker hub"
           command: |
-            docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
+            echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
       - run:
           name: "Build image"
           command: |
