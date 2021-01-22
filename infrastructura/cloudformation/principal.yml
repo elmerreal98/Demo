@@ -46,3 +46,16 @@ Resources:
     Type: "AWS::S3::Bucket"
     Properties:
       BucketName: demo-bucket-cloudformation
+
+  BastionStack:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: !Join
+        - ""
+        - - !Ref BucketS3
+          - "/bastion.yml"
+      Parameters:
+        RefSubnetPublica: !GetAtt NetworkStack.Outputs.RefSubnetPublic1
+        RefSG: !GetAtt NetworkStack.Outputs.RefSG
+        RefDefaultSG: !GetAtt NetworkStack.Outputs.RefDefaultSG
+        EC2TYPE: !Ref EC2TYPE
