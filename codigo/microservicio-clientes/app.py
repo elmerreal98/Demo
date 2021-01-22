@@ -7,10 +7,7 @@ def metodo1():
 
 @app.route('/crear')
 def metodo2():
-    if request.method == 'POST':
-        return "POST"
-    else:
-        return 'success'
+    return render_template('crear.html')s
 
 @app.route('/listar')
 def metodo3():
