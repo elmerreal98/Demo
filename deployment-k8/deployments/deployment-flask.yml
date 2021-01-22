@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-flask
+spec:
+  selector:
+    matchLabels:
+      app: flask
+  template:
+    metadata:
+      labels:
+        app: flask
+    spec:
+      replicas: 3
+      containers:
+      - name: flask-container
+        image: elmerreal98/demo-frontend
+        ports:
+        - containerPort: 5000
