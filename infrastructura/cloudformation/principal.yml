@@ -1,0 +1,48 @@
+Description: Template para instancias.
+
+Parameters:
+  BucketS3:
+    Description: "Bucket de los templates"
+    Type: String
+
+  BDUSER:
+    Description: "User"
+    Type: String
+
+  BDPASS:
+    Description: "Password"
+    Type: String
+
+  RDSTYPE:
+    Description: "Tipo RDS"
+    Type: String
+    Default: db.t2.micro
+
+Resources:
+  NetworkStack:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: !Join
+        - ""
+        - - !Ref BucketS3
+          - "/network.yml"
+
+  BDStack:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: !Join
+        - ""
+        - - !Ref BucketS3
+          - "/db.yml"
+      Parameters:
+        RefSubnetsPrivadas: !GetAtt NetworkStack.Outputs.RefSubnetsPrivadas
+        RefSG: !GetAtt NetworkStack.Outputs.RefSGBD
+        RefDefaultSG: !GetAtt NetworkStack.Outputs.RefDefaultSG
+        BDUSER: !Ref BDUSER
+        BDPASS: !Ref BDPASS
+        RDSTYPE: !Ref RDSTYPE
+
+  S3Bucket:
+    Type: "AWS::S3::Bucket"
+    Properties:
+      BucketName: demo-bucket-cloudformation
