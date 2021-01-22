@@ -1,0 +1,6 @@
+Description: Template para crear el bucket de backend para terraform
+Resources:
+  S3Bucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: demo-bucket-cloudformation
