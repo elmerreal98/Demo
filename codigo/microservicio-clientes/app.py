@@ -1,13 +1,19 @@
 from flask import Flask, render_template
 app = Flask(__name__)
 
+@app.route('/')
+def metodo1():
+    return "OK"
 
 @app.route('/crear')
-def hello():
-    return render_template('crear.html')
+def metodo2():
+    if request.method == 'POST':
+        return "POST"
+    else:
+        return 'success'
 
 @app.route('/listar')
-def hello():
+def metodo3():
     return render_template('listar.html')
 
 
