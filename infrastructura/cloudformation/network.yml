@@ -102,4 +102,4 @@ Outputs:
     Value: !Ref SGBD
   RefDefaultSG:
     Description: Id security group
-    Value: !GetAtt VPC.DefaultSecurityGroups
+    Value: !GetAtt VPC.DefaultSecurityGroup
